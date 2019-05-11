@@ -10,16 +10,9 @@ node {
               sh "mvn package"
             }
   }
-  stage('Test') {
-              steps {
-                  sh './src/test/java/edu/cscc/topics/quality/unit check'
-              }
-          }
-      }
       post {
           always {
-              junit 'src/test/results.xml'
+              junit 'target/surefire-reports'
           }
       }
   }
-}
